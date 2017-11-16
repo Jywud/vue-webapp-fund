@@ -1,0 +1,218 @@
+@import "./common.less";
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100px;
+    height: 100%;
+}
+
+body {
+    font-size: 0.14rem;
+    height: 100%;
+    -webkit-user-select: none;
+    background: #f3f4f7;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+img {
+    -webkit-touch-callout: none; //禁止拷贝
+    border: 0;
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+}
+
+input,
+textarea {
+    border: 0;
+    vertical-align: middle;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+a,
+button,
+input,
+textarea {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+/* fastclick启用的情况下 */
+
+label>* {
+    pointer-events: none;
+}
+
+.user-select-none {
+    -webkit-user-select: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+::-webkit-input-placeholder {
+    color: #cdcdcd;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+/* 按钮 默认是大按钮*/
+
+.btn {
+    border: 0;
+    color: #fff;
+    text-align: center;
+    display: block;
+    margin: auto;
+    border-radius: 4px;
+    font-size: 18px;
+    height: 0.45rem;
+    line-height: 0.45rem;
+    outline: none;
+}
+
+
+/* 小按钮 */
+
+.btn-sm {
+    width: 36%;
+    height: 0.36rem;
+    line-height: 0.36rem;
+}
+
+
+/* 主题色 */
+
+.btn-primary {
+    background-color: @primary-color;
+}
+
+
+/*页面切换动画*/
+
+.animate-diy {
+    animation-duration: 0.2s
+}
+
+/* 按钮指令颜色 */
+.btn-touch-on {
+    background: @primary-color-btn-on !important;
+}
+
+/* 第三方库样式覆盖 */
+
+.vux-popup-picker-header-menu-right {
+    color: @primary-color;
+}
+
+.vux-x-dialog {
+    .weui-dialog__bd {
+        color: #030303;
+        font-size: 16px;
+    }
+    .weui-dialog__btn_default {
+        color: #999;
+    }
+    .weui-dialog__btn_primary {
+        color: @primary-color;
+    }
+}
+
+
+/*====================单选框 复选框=========================*/
+
+.i-radio,
+.i-checkbox {
+    margin-right: 4px;
+    color: #cdcdcd;
+}
+
+input[type=radio],
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=radio]:checked+.i-radio,
+input[type=checkbox]:checked+.i-checkbox {
+    color: @primary-color;
+}
+
+input[type=radio]+.i-radio:before {
+    content: "\e6ac";
+}
+
+input[type=radio]:checked+.i-radio:before {
+    content: "\e6b1";
+}
+
+input[type=checkbox]+.i-checkbox:before {
+    content: "\e6ae";
+}
+
+input[type=checkbox]:checked+.i-checkbox:before {
+    content: "\e69d";
+}
+
+
+/*====================手机适配=========================*/
+
+
+/* iphone4 */
+
+@media (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) {
+    html {
+        font-size: 96px !important;
+    }
+}
+
+
+/* iphone5 */
+
+@media (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) {
+    html {
+        font-size: 96px !important;
+    }
+}
+
+
+/* iphone 6,7 */
+
+@media (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-device-pixel-ratio: 2) {
+    html {
+        font-size: 100px !important;
+    }
+}
+
+
+/* iphone 6,7 plus*/
+
+@media (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-device-pixel-ratio: 3) {
+    html {
+        font-size: 110px !important;
+    }
+}
+
+
+/* 特殊安卓*/
+
+@media (min-device-height: 737px) and (-webkit-device-pixel-ratio: 3) {
+    html {
+        font-size: 110px !important;
+    }
+}

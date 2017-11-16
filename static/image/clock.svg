@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/clock</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="1.3930963%" y1="98.6263109%" x2="98.6263109%" y2="1.3930963%" id="linearGradient-1">
+            <stop stop-color="#F9D423" offset="0%"></stop>
+            <stop stop-color="#FF4E50" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-34.000000, -214.000000)" id="tag-bar" fill="url(#linearGradient-1)">
+            <g transform="translate(0.000000, 194.000000)">
+                <g id="icon/clock" transform="translate(34.000000, 20.000000)">
+                    <g id="Shape">
+                        <path d="M12.9999707,2.83546655 C19.4999707,2.83546655 24.6987236,7.98350268 24.6987236,14.4196388 C24.6987236,20.850102 19.5,26 13,26 C6.5,26 1.30127636,20.850102 1.30127636,14.4196388 C1.30127636,7.98350268 6.49997073,2.83546655 12.9999707,2.83546655 L12.9999707,2.83546655 Z M18.8474151,17.892246 L13.6474619,14.8024876 L13.6474619,7.98350268 L11.6987236,7.98350268 L11.6987236,15.7033168 L17.8076469,19.4395835 L18.8474151,17.8922169 L18.8474151,17.892246 Z M26,5.01869375 L20.0179227,0 L18.3294631,1.93024445 L24.3077055,6.95400019 L26,5.01869375 L26,5.01869375 Z M1.68720078,6.95402928 L0,5.01869375 L5.98327756,0.129284195 L7.67050762,2.05955774 L1.68720078,6.95402928 Z" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
