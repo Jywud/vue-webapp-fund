@@ -1,6 +1,6 @@
 <style lang="less">
 // @import "../../common/style/common.less";
-.v-scoreBar{    
+.hs-scoreBar{    
     display: flex;
     flex-flow: nowrap;
     .score{
@@ -12,14 +12,14 @@
 }
 </style>
 <template>
-    <div class="v-scoreBar">
+    <div class="hs-scoreBar">
         <span class="score iconfont icon-unchecked2" 
         :style="{'font-size': fontSize, color: color}" :class="{'icon-unchecked1': index<=score}" v-for="index in scoreCounts" :key="index"></span>
     </div>
 </template>
 <script>
 export default {
-    name: 'v-scoreBar',
+    name: 'hs-scoreBar',
     data() {
         return {}
     },

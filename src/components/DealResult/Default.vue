@@ -1,5 +1,5 @@
 <template>
-    <div id="v-dealResult">
+    <div class="hs-dealResult">
         <div class="dealResult-header">
             <span class="iconfont" :class="getStateClass()"></span>
             <p class="fund-state">{{getStateText()}}</p>
@@ -14,7 +14,7 @@
 </template>
 <script>
     export default {
-        name: 'v-dealResult',
+        name: 'hs-dealResult',
         data() {
             return {}
         },
@@ -41,7 +41,7 @@
 </script>
 <style lang="less">
     @import "../../common/style/common.less";
-    #v-dealResult {
+    .hs-dealResult {
         margin: 16px 16px 30px;
         background: #fff;
         .dealResult-header {

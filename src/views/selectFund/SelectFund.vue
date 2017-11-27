@@ -3,7 +3,7 @@
         <div class="select-main">
             <div class="search-input">
                 <span class=" iconfont icon-search search-icon"></span>
-                <input class="search-value" v-model="searchText" placeholder="输入基金名称/代码进行搜索"/>
+                <input class="search-value" v-model="searchText" placeholder="输入基金名称/代码进行搜索" v-focus>
                 <span class="iconfont icon-empty mes-clean" v-show="isShowEmpty" @click="searchText=''"></span>
             </div>
             <div class="search-cancel" @click="cancel()">取消</div>

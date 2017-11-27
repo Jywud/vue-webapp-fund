@@ -1,6 +1,6 @@
 <template>
     <div id="hotFundRanking">
-        <title-bar v-if="!isShowOrder" title="热门排行" :show-close="false" :isColorful="true">
+        <title-bar v-if="!isShowOrder" title="热门排行" back-path="/home" :isColorful="true">
             <i class="iconfont icon-search" @click="search"></i>
         </title-bar>
         <div id="fund-type" class="fund-type" :style="getFundTypeStyle()">
@@ -73,7 +73,7 @@
                 } else if (ret.type == "orderBy") {
                     this.isShowOrder = ret.data.isShowOrder;
                     this.chooseOrder = ret.data.chooseOrder;
-                    alert(JSON.stringify(ret));
+                    // alert(JSON.stringify(ret));
                 } else if (ret.type == "edit-finish") {
                     this.doEdit();
                 }

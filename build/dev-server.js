@@ -20,6 +20,11 @@ var proxyTable = config.dev.proxyTable
 var app = express()
 var compiler = webpack(webpackConfig)
 
+/* 使用自定义的mock数据中间件 */
+if (config.dev.useMockData) {
+    app.use('/mock', require('../test/index'))
+}
+
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
   quiet: true

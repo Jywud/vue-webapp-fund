@@ -63,28 +63,28 @@
             <span class="iconfont icon-arrows"></span>
         </div>
         <div class="group">
-            <row-cell title="交易记录" link="/transactionRecord">
+            <line-cell title="交易记录" url="/transactionRecord">
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-jiaoyijilu"></use>
                 </svg>
-            </row-cell>
+            </line-cell>
         </div>
         <div class="group">
-            <row-cell title="银行卡管理" link="/bankCardManage">
+            <line-cell title="银行卡管理" url="/bankCardManage">
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-yinhangka"></use>
                 </svg>
-            </row-cell>
-            <row-cell title="密码管理" link="/changeTradePwd">
+            </line-cell>
+            <line-cell title="密码管理" url="/changeTradePwd">
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-mimaguanli"></use>
                 </svg>
-            </row-cell>
-            <row-cell title="风险测评" link="/evaluationResult">
+            </line-cell>
+            <line-cell title="风险测评" url="/evaluationResult">
                 <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-fengxianceping1"></use>
                 </svg>
-            </row-cell>
+            </line-cell>
         </div>       
         <p class="version">-版本 1.0.0-</p>
     </div>

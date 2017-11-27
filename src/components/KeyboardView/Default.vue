@@ -1,5 +1,5 @@
 <template>
-    <div id="keyboard-view">
+    <div class="hs-keyboardView">
         <div class="box" v-for="(item ,index) in itemList" :key="index">
             <div :class="changeClass(child)" v-for="(child ,cindex) in item" :key="cindex" @click="onclick(child)">
                 <div class="value">{{child}}</div>
@@ -9,6 +9,7 @@
 </template>
 <script>
     export default {
+        name: 'hs-keyboardView',
         data() {
             return {
                 itemList: [
@@ -21,6 +22,9 @@
         },
         methods: {
             onclick(item){
+                if(item == '') {
+                    return;
+                }
                 this.$emit('change', item);
             },
             changeClass(item){
@@ -33,7 +37,7 @@
 <style lang="less">
     @import "../../common/style/common.less";
 
-    #keyboard-view {
+    .hs-keyboardView {
         position: absolute;
         bottom: 0;
         left: 0;

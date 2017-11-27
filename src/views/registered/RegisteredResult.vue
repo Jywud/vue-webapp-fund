@@ -1,6 +1,6 @@
 <template>
     <div id="registeredResult">
-        <title-bar title="设置密码" :show-close="false" :back-path="backPath"></title-bar>
+        <title-bar title="设置密码" :show-close="false" back-path="/login"></title-bar>
         <div class="main-column-box main">
             <div class="mes-layout">
                 <div class="mes-top">
@@ -9,10 +9,10 @@
                 </div>
                 <div class="mes-bottom">
                     <div class="mes-value">您的理财账号为</div>
-                    <div class="mes-value mes-important">18100765</div>
+                    <div class="mes-value mes-important">{{account}}</div>
                 </div>
                 <div class="sure-layout">
-                    <div class="btn btn-primary btn-sure" v-btntouch>
+                    <div class="btn btn-primary btn-sure" v-btntouch @click="goLogin">
                         马上登录
                     </div>
                 </div>
@@ -22,19 +22,17 @@
 </template>
 <script>
     export default {
-        name: 'registeredResult',
-        mounted() {
-
-        },
+        name: 'registeredResult',        
         data() {
-            return {
-                userName: "",
-                password: "",
-                code: "",
-                backPath: "/login"
+            return {                
+                account: ''
             }
         },
-        methods: {}
+        methods: {
+            goLogin() {
+                APP.openWin("/login");
+            }
+        }
     }
 </script>
 <style lang="less">

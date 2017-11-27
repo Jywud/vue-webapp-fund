@@ -23,17 +23,22 @@
                 flex: 1;
                 text-align: right;
                 input[type="text"]{
-                    width: 100px;
+                    height: 30px;
+                    width: 120px;
                     border: 1px solid #ededed;
-                    padding: 10px;
+                    padding: 0 10px;
                     text-align: right;
                 }
             }
 
         }
     }
-	.agreement-line {
-		padding: 15px;
+	.agreement-line {        
+        margin: 15px 15px 0;             
+        label{
+            display: inline-block;
+            height: 50px;;
+        }
 		.agreen-text {
 			color: @litdark-color;
 		}
@@ -42,7 +47,7 @@
 		}
 	}
 	.btn-next {
-		margin: 15px 15px 0;
+		margin: 0 15px;
 		border-radius: 4px;
 	}
 	.tip {
@@ -142,13 +147,11 @@ export default {
 		chooseBank() {
 
 		},
-		goNext() {
-            APP.openPopWin('passwordView', (data)=> {
-                // console.log(data);
-                if(data.status == 2) {                    
-                    APP.openWin('/investResult');
-                }                
-            });
+		goNext() {            
+            utils.setCommonRouter({
+                'appropriateAssessment': '/investResult'
+            });                 
+            APP.openWin('/appropriateAssessment');
 		},
 		watchAgreen() {
 

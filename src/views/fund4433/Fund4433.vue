@@ -32,7 +32,7 @@
 </style>
 <template>
     <div id="fund4433">
-        <title-bar title="4433选基法" :isColorful="true" >
+        <title-bar title="4433选基法" :isColorful="true" back-path="/home">
             <i class="iconfont icon-search"></i>
             <i class="iconfont icon-explain" @click="goPage"></i>
         </title-bar>

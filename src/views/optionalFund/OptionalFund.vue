@@ -1,6 +1,6 @@
 <template>
     <div id="optionalFund">
-        <title-bar title="自选基金" :show-close="false" :isColorful="true">
+        <title-bar title="自选基金" :show-close="false" :isColorful="true" back-path="/home">
             <i class="iconfont icon-search" @click="search"></i>
             <span v-if="isShowList" class="edit" @click="doEdit">编辑</span>
         </title-bar>
@@ -58,7 +58,7 @@
                 } else if (ret.type == "onclick") {
                     APP.openWin("/fundDetails");
                 } else if (ret.type == "orderBy") {
-                    alert(JSON.stringify(ret));
+                    // alert(JSON.stringify(ret));
                 } else if (ret.type == "edit-finish") {
                     this.doEdit();
                 }

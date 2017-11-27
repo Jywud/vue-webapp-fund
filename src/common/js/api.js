@@ -1,3 +1,7 @@
+/**
+ * created by wujiayu on 2017.10.12
+ * 接口请求封装
+ */
 import _ from 'underscore'
 
 /*ajax请求对象*/
@@ -45,6 +49,12 @@ var API = {
     },
     getSysConfig(params) {
         return execute('hsobm/v2/getSysConfig', params);
+    },
+    login() {
+        return execute('mock/login');
+    },
+    assetlist() {
+        return execute('mock/myAssetlist');
     }
 };
 

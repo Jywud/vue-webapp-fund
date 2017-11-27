@@ -1,5 +1,5 @@
 <template>
-    <div id="listLayout" :style="getLayoutStyle()">
+    <div class="hs-listLayout" :style="getLayoutStyle()">
         <div v-if="isShowRefresh" class="list-refresh" :class="{'list-refresh-filter':hasFilter()}">
             <canvas id="listRrefresh" width="200" height="24" class="refresh-canvas"></canvas>
             <div class="refresh-title">下拉刷新</div>
@@ -55,7 +55,7 @@
 </template>
 <script>
     export default {
-        name: 'listLayout',
+        name: 'hs-listLayout',
         data() {
             return {
                 list: [],              //数据标准化处理后的配置实体
@@ -608,7 +608,7 @@
         },
         watch: {
             /**根据配置的变化 配置组件**/
-            setting: function () {
+            setting() {
                 this.checkSetting();
             }
         }
@@ -644,7 +644,7 @@
 <style lang="less">
     @import "../../common/style/common.less";
 
-    #listLayout {
+    .hs-listLayout {
         display: flex;
         flex-flow: column nowrap;
         height: 100%;

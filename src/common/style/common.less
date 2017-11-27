@@ -8,8 +8,9 @@
 @litgray-color: #cdcdcd;
 @border-color: #e5e5e5;      //边框
 @lose-color: #00981a;        //跌
-@fail-color: #ff4e50;        //失败
+@rise-color: #ff4e50;        //涨
 @success-color: #49C845;     //成功
+@fail-color: #ff4e50;        //失败
 @colorful-color: linear-gradient(90deg, #f9d423 0%, #ff4e50 100%);
 
 /**触摸颜色**/
@@ -19,12 +20,12 @@
 
 /* 顶部1px线条 */
 
-.border-t-1px(@color: #e5e5e5) {
+.border-t-1px(@color: #e5e5e5, @left:0) {
     position: relative;
     &::after {
         display: block;
         position: absolute;
-        left: 0;
+        left: @left;
         right: 0;
         top: 0;
         content: ' ';
@@ -40,12 +41,12 @@
 
 /* 底部1px线条 */
 
-.border-b-1px(@color: #e5e5e5) {
+.border-b-1px(@color: #e5e5e5, @left:0) {
     position: relative;
     &::after {
         display: block;
         position: absolute;
-        left: 0;
+        left: @left;
         right: 0;
         bottom: 0;
         content: ' ';
@@ -150,7 +151,7 @@
         border-width: 1px 1px 0 0;
         border-color: #999;
         border-style: solid;
-        margin-left: 6px;
+        margin-left: 4px;
     }
 }
 
@@ -178,6 +179,30 @@
     border-left: @width solid transparent;
     border-right: @width solid transparent;
     border-top: @width solid @color;
+}
+
+/* 向右三角 */
+
+.triangle-right(@width: 5px, @color: #999) {
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    border-left: @width solid @color;
+    border-top: @width solid transparent;
+    border-bottom: @width solid transparent;
+}
+
+/* 向左三角 */
+
+.triangle-left(@width: 5px, @color: #999) {
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    border-right: @width solid @color;
+    border-top: @width solid transparent;
+    border-bottom: @width solid transparent;
 }
 
 

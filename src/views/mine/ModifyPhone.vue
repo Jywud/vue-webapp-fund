@@ -85,15 +85,14 @@
         methods: {
             done() {
                 if(!utils.checkMobile(this.phone)) {
-                    this.$vux.toast.text('手机号格式有误');
+                    utils.toast('手机号格式有误');
                     return;
                 }
                 if(!utils.check6Num(this.code)) {
-                    this.$vux.toast.text('验证码为6位数字');
+                    utils.toast('验证码为6位数字');
                     return;
-                }
-                // var url = utils.getCommonRouter('modifyPhone');
-                this.$vux.toast.text('修改成功');
+                }                
+                utils.toast('修改成功');
                 APP.closeTo('/myInformation');
             },
             getMesCode() {

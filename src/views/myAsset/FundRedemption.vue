@@ -78,7 +78,7 @@
                 margin-left: 15px;
                 .border-b-1px();
                 &.input{
-                    padding: 5px 15px 5px 0;
+                    padding: 8px 15px 8px 0;
                 }
                 .left-text {
                     width: 100px;
@@ -107,15 +107,16 @@
                     text-align: right;
                     input[type="text"]{
                         width: 120px;
+                        height: 30px;
                         border: 1px solid #ededed;
                         text-align: right;
-                        padding: 10px;
+                        padding: 0 10px;
                     }
                 }
             }
             .tip {
                 margin: 0;
-                padding: 5px 16px 16px;
+                padding: 12px 16px;
                 background-color: rgba(244, 243, 248, 1);
                 font-size:12px;
                 color:@gray-color;

@@ -1,5 +1,5 @@
 <template>
-    <div id="passwordView">
+    <div class="hs-passwordView">
         <div class="mask-layer" @click="close"></div>
         <transition name="transition-up-down">
             <div class="main-box" v-show="isShowBox">
@@ -30,7 +30,7 @@
 </template>
 <script>
     export default {
-        name: "login",
+        name: "hs-passwordView",
         mounted() {
             setTimeout(() => {
                 this.isShowBox = true;
@@ -106,7 +106,7 @@
 </script>
 <style lang="less">
     @import "../../common/style/common.less";
-    #passwordView {
+    .hs-passwordView {
         .page-style();
         .mask-layer {
             .mask-layer();

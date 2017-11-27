@@ -1,24 +1,27 @@
 <template>
     <div id="login">
-        <!--<list-layout :setting="setting"></list-layout>-->
         <div class="title-bar">
             <div class="iconfont icon-close right-icon" @click="doBack"></div>
         </div>
-        <div class="login-title">登录</div>
-        <div class="input-item">
-            <input type="tel" v-model="userName" placeholder="请输入手机号码或理财账号">
-        </div>
-        <div class="input-item">
-            <input type="password" v-model="password" maxlength="6" placeholder="请输入交易密码">
-        </div>
-        <div class="input-item code-box">
-            <input type="tel" class="input" v-model="code" placeholder="请输入验证码">
-            <img class="code-img" src="" />
-        </div>
-        <div class="btn btn-primary btn-login" @click="doLogin" v-btntouch>登 录</div>
-        <div class="btn-otherdo">
-            <span class="registered" @click="doRegister">立即注册</span>
-            <span class="forget" @click="forgetPwd">忘记密码</span>
+        <div class="main-column-box">
+            <div class="login-title">登录</div>
+            <div class="input-item">
+                <input type="tel" v-model="account" placeholder="请输入手机号码或理财账号" maxlength="11" v-focus>
+                <span class="iconfont icon-empty account-clean" v-show="!!account" @click="account=''"></span>
+            </div>
+            <div class="input-item">
+                <input type="password" v-model="password" maxlength="6" placeholder="请输入交易密码">
+                <span class="iconfont icon-empty pwd-clean" v-show="!!password" @click="password=''"></span>
+            </div>
+            <div class="input-item code-box">
+                <input type="tel" class="input" v-model="code" placeholder="请输入验证码" maxlength="4">
+                <img class="code-img" src="" />
+            </div>
+            <div class="btn btn-primary btn-login" @click="doLogin" v-btntouch>登 录</div>
+            <div class="btn-otherdo">
+                <span class="registered" @click="doRegister">立即注册</span>
+                <span class="forget" @click="forgetPwd">忘记密码</span>
+            </div>
         </div>
     </div>
 </template>
@@ -27,59 +30,12 @@
     export default {
         name: 'login',
         mounted() {
-            this.getJson();
-            this.setting = {
-                data: this.json,
-                title: [{
-                        style: {
-                            textAlign: "left"
-                        },
-                        value: "bbb"
-                    },
-                    {
-                        style: {
-                            textAlign: "right"
-                        },
-                        value: "aaa"
-                    }
-                ],
-                column: [{
-                        style: {
-                            textAlign: "left",
-                            flex: 1,
-                        },
-                        item: [{
-                            value: "name",
-                            type: "",
-                            style: {
-                                fontSize: "14px"
-                            }
-                        }, {
-                            value: "id",
-                            type: ""
-                        }]
-                    },
-                    {
-                        style: {
-                            textAlign: "right",
-                            flex: 1,
-                        },
-                        item: [{
-                            value: "",
-                            type: "t",
-                            class: "iconfont icon-more"
-                        }]
-                    }
-                ]
-            }
         },
         data() {
             return {
-                userName: "",
+                account: "",
                 password: "",
-                code: "",
-                setting: {},
-                json: []
+                code: ""
             }
         },
         methods: {
@@ -87,6 +43,19 @@
                 APP.closeTo("/home");
             },
             doLogin() {
+                if (this.account == false) {
+                    utils.toast('请输入手机号或者理财账号');
+                    return;
+                }
+                if (this.password == false) {
+                    utils.toast('请输入交易密码');
+                    return;
+                }
+                if (this.code == false) {
+                    utils.toast('请输入验证码');
+                    return;
+                }
+                // console.log(APP.rsaEncrypt(this.password));
                 APP.openWin("/home");
             },
             doRegister() {
@@ -95,23 +64,12 @@
                 });
                 APP.openWin("/registered");
             },
-            refreshCaptcha() {
-            },
+            refreshCaptcha() {},
             forgetPwd() {
                 utils.setCommonRouter({
                     registeredPwd: '/login'
                 });
                 APP.openWin("/registeredPhoneVerification");
-            },
-            getJson() {
-                for (var i = 0; i < 40; i++) {
-                    this.json.push({
-                        id: "200168",
-                        name: "南方稳健一号" + i,
-                        value1: "1.2872",
-                        value2: "+1.23%"
-                    });
-                }
             }
         }
     }
@@ -121,14 +79,13 @@
     #login {
         .page-style();
         background-color: @white-color;
-        padding-bottom: 30px;
         .title-bar {
             height: 44px;
             width: 100%;
             background: #ffffff;
             .right-icon {
-                margin: 13px 20px 13px 20px;
-                display: inline-block;
+                margin: 13px 20px;
+                display: block;
                 width: 16px;
                 height: 16px;
                 float: right;
@@ -139,14 +96,20 @@
         .login-title {
             display: block;
             width: 100%;
-            margin: 36px 0px 46px;
+            margin: 36px 0;
             text-align: center;
             font-size: 28px;
         }
         .input-item {
+            position: relative;
             .border-b-1px(@border-color);
             margin: 7px 30px;
-            height: 44px;
+            height: 40px;
+            .icon-empty {
+                position: absolute;
+                right: 8px;
+                top: 12px;
+            }
             input {
                 font-size: 16px;
                 width: 100%;
@@ -166,13 +129,11 @@
             }
         }
         .btn-login {
-            margin: 36px 30px 0;
+            margin: 26px 30px 0;
             width: auto;
         }
         .btn-otherdo {
             display: flex;
-            flex-flow: row nowrap;
-            align-items: center;
             margin: 24px 30px 0;
             .registered {
                 flex: 1;

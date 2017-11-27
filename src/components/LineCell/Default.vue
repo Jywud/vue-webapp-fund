@@ -1,47 +1,60 @@
 <style lang="less">
     @import "../../common/style/common.less";
-    #v-lineCell{        
+    .hs-lineCell{        
         &.line-item{
             display: flex;
-            padding: 18px 16px 18px 0;
-            margin-left: 16px;
-            .border-b-1px();
+            align-items: center;
+            padding: 14px 16px;  
+            overflow-x: hidden;         
+            .border-b-1px(#e5e5e5, 16px);
             &:last-child::after{
                 height: 0;
                 border: 0;
+            }            
+            .left-pan{
+                display: flex;
+                align-items: center;
+                width: 120px;      
+                .icon{
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px; 
+                    margin-right: 8px;
+                }
+                .title{                              
+                    font-size:16px;
+                    color:@dark-color;
+                    text-align:left;
+                }
             }
-            .title{
-                width: 120px;                
-                font-size:16px;
-                color:@dark-color;
-                text-align:left;
-            }
-            .right-pan{
+            .text{
                 flex: 1;
                 text-align: right;                
                 color: @gray-color;
-            }
-            .text{
                 font-size: 14px;
-            }
-            .icon-modify{
-                color: #cdcdcd;
+                .word-hide();
+            }            
+            .arrow{
+                .arrow-r();
             }
         }
     }    
 </style>
 <template>   
-    <div id="v-lineCell" class="line-item">       
-        <span class="title">{{title}}</span>
-        <div class="right-pan" @click="tapItem">
-            <span class="text">{{text}}</span>
-            <span class="icon-modify iconfont icon-arrows" v-if="isLink"></span>
+    <div class="hs-lineCell line-item" @click="tapItem" v-touch> 
+        <div class="left-pan">
+            <slot><!-- 请加类名icon --></slot>           
+            <span class="title">{{title}}</span>
+        </div>        
+        <div class="text">
+            {{text}}            
         </div>
+        <span class="arrow" v-if="showArrow"></span>
     </div>    
 </template>
 <script>
     export default {
-        name: 'v-lineCell',
+        name: 'hs-lineCell',
         data() {
             return {
                 
@@ -49,10 +62,21 @@
         },
         methods: {
            tapItem() {
+               /* 有url和右侧箭头 */
+               if(!!this.url) {
+                   APP.openWin(this.url);
+                   return;
+               }
+               /* 只有右侧箭头，触发父组件事件 */
                if(this.isLink) {
                    this.$emit('tapItem', this.title);
                }               
            }
+        },
+        computed: {
+            showArrow() {
+                return this.isLink || this.url;
+            }
         },
         props: {
             /* 左侧标题 */
@@ -65,8 +89,13 @@
             text: {
                 type: String,
                 required: false,
-                default: '--'                
-            },       
+                default: ''                
+            },   
+            /* 路由地址 */
+            url: {
+                type: String,
+                default: ''
+            },    
             /* 是有显示右侧箭头 */
             isLink: {
                 type: Boolean,

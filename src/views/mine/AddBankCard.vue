@@ -33,6 +33,9 @@
                 padding: 15px 15px 15px 0;
                 margin-left: 15px;
                 .border-b-1px();
+                &:last-child::after{
+                    display: none;
+                }
                 .left-text {
                     width: 100px;
                     font-size: 16px;
@@ -54,7 +57,11 @@
             }
         }
         .agreement-line {
-            padding: 15px;
+            margin: 15px 15px 0;            
+            label{
+                display: inline-block;
+                height: 50px;;
+            }
             .agreen-text {
                 color: @litdark-color;
             }
@@ -63,7 +70,7 @@
             }
         }
         .btn-next {
-            margin: 15px 15px 0;
+            margin: 0 15px;
         }
     }
 </style>
@@ -102,10 +109,10 @@
             </div>
             <div class="agreement-line">
                 <label>
-                        <input type="checkbox" v-model="modelValue">
-                        <i class="iconfont i-checkbox"></i>
-                        <span class="agreen-text">我已同意并阅读</span>
-                    </label>
+                    <input type="checkbox" v-model="modelValue">
+                    <i class="iconfont i-checkbox"></i>
+                    <span class="agreen-text">我已同意并阅读</span>
+                </label>
                 <span class="agreen-content" @click="watchAgreen">《快捷支付服务协议》</span>
             </div>
             <div class="btn btn-primary btn-next" @click="goNext" v-btntouch>下一步</div>

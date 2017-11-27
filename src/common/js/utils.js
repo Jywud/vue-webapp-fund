@@ -1,22 +1,132 @@
-/*工具类*/
+/**
+ * created by wujiayu on 2017.10.9
+ * 自定义工具类库,包括vux的弹框封装、storage方法封装、校验函数和其他常用的函数
+ */
 import _ from 'underscore'
 import Vue from 'vue'
 
 var utils = {
-    showToast() {
-        /* Vue.$vux.alert.show({            
-            content: 'Do you agree?'
-        }) */
-        Vue.$vux.confirm.show({
-            // 组件除show外的属性
-            content: '我当麻溜的沙隆达色舒服舒服水电费水电费水电费水电费是否是否',
-            onCancel() {
-                
-            },
-            onConfirm() { }
+    /**    
+     * 文字提示框
+     * @param text   提示文字（string）
+     * @param time   展示时间（ms）
+     * @param width  弹框宽度（string）
+     */
+    toast(text, time, width) {
+        Vue.$vux.toast.show({
+            type: 'text',
+            text: text || '',
+            time: time || 2500,
+            width: width || 'auto'
         });
     },
-    /* sessionStorage-setItem */
+    /* 隐藏文字弹框 */
+    hideToast() {
+        Vue.$vux.toast.hide();
+    },
+
+    /**
+     * alert弹出框
+     * @param obj 对象类型
+     * @param obj.title        弹窗标题（string）
+     * @param obj.content      弹窗内容（string or htmlstring）
+     * @param obj.onShow       取消回调函数（function）
+     * @param obj.onHide       确定回调函数（function）
+     */
+    alert(obj={}) {
+        Vue.$vux.alert.show({
+            title: obj.title || '',
+            content: obj.content || '',
+            onShow() {
+                obj.onShow && obj.onShow();
+            },
+            onHide() {
+                obj.onHide && obj.onHide();
+            }
+        });
+    }, 
+    /* 隐藏alert弹框 */   
+    hideAlert() {
+        Vue.$vux.alert.hide();
+    },
+
+    /**      
+     * confirm弹框
+     * @param obj 对象类型
+     * @param obj.title           弹窗标题（string）
+     * @param obj.content         弹窗内容（string or htmlstring）
+     * @param obj.onCancel        取消回调函数（function）
+     * @param obj.onConfirm       确定回调函数（function）
+     */ 
+    confirm(obj={}) {
+        Vue.$vux.confirm.show({
+            title: obj.title || '',
+            content: obj.content || '',
+            onCancel() {
+                obj.onCancel && obj.onCancel();
+            },
+            onConfirm() {                
+                obj.onConfirm && obj.onConfirm();
+            }
+        });
+    },
+    /* 隐藏confirm弹框 */
+    hideConfirm() {
+        Vue.$vux.confirm.hide();
+    },
+
+    /**
+     * 加载框
+     * @param text 提示文字(string)
+     */
+    loading(text) {
+        Vue.$vux.loading.show({
+            text: text || '加载中'
+        });
+    },
+    /* 隐藏loading加载框 */
+    hideLoading() {
+        Vue.$vux.loading.hide();
+    },
+    
+    /**
+     * 日期选择器
+     * @param obj 对象类型
+     * @param obj.format     日期格式（string YYYY-MM-DD HH:mm:ss）
+     * @param obj.value      默认值（string 如'2017-02-12'）
+     * @param obj.title      标题（string）
+     * @param obj.startDate  开始日期（string）
+     * @param obj.endDate    结束日期（string）
+     * @param obj.onConfirm  确定回调函数（function）
+     * @param obj.onShow     显示弹框回调函数（function）
+     * @param obj.onHide     隐藏弹框函调函数（function）
+     */
+    showDateTime(obj={}) {
+        Vue.$vux.datetime.show({
+            format: obj.format || 'YYYY-MM-DD',
+            title: obj.title || '',
+            value: obj.value || '',  
+            startDate: obj.startDate || '1949-01-01',
+            endDate: obj.endDate || '2100-01-01',       
+            confirmText: '确定',
+            cancelText: '取消',
+            onConfirm(val) {                
+                obj.onConfirm && obj.onConfirm(val);
+            },
+            onShow() {
+                obj.onShow && obj.onShow();
+            },
+            onHide() {
+                obj.onHide && obj.onHide();
+            }
+        });
+    },
+    /* 隐藏日期弹出框 */
+    hideDateTime() {
+        Vue.$vux.datetime.hide();
+    },
+
+    /* sessionStorage-setItem */    
     setData(key, data) {
         sessionStorage.setItem(key, JSON.stringify(data));
     },

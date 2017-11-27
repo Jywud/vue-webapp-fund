@@ -54,11 +54,11 @@
                 </div>
             </div>
             <div class="other-group">
-                <row-cell title="基金概况" link="/fundSituation"></row-cell>
-                <row-cell title="基金经理" link="/fundManager"></row-cell>
-                <row-cell title="投资组合" link="/fundPortfolio"></row-cell>
-                <row-cell title="基金分红" link="/fundDividend"></row-cell>
-                <row-cell title="基金费率" link="/fundRate"></row-cell>
+                <line-cell title="基金概况" url="/fundSituation"></line-cell>
+                <line-cell title="基金经理" url="/fundManager"></line-cell>
+                <line-cell title="投资组合" url="/fundPortfolio"></line-cell>
+                <line-cell title="基金分红" url="/fundDividend"></line-cell>
+                <line-cell title="基金费率" url="/fundRate"></line-cell>               
             </div>
         </div>
         <div class="bottom-box">
@@ -269,6 +269,7 @@
     #fundDetails {
         .page-style();
         .main {
+            padding-bottom: 20px;
             .details-main {
                 background: @white-color;
                 width: 100%;
@@ -436,16 +437,12 @@
                 }
             }
             .other-group {
-                wdith: 100%;
-                background: @white-color;
-                margin-bottom: 80px;
+                width: 100%;
+                background: @white-color;               
             }
         }
-        .bottom-box {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: auto;
+        .bottom-box {            
+            width: 100%;            
             background: @white-color;
             .rate {
                 display: flex;

@@ -48,7 +48,7 @@
         },
         methods: {
             confirm() {
-                APP.closeTo('/home');
+                APP.closeTo('/investDetail');
             }
         }
     };

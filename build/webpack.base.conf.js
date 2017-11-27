@@ -12,9 +12,6 @@ let webpackConfig = {
     entry: {
         app: ["babel-polyfill", "./src/main.js"]
     },
-    /*entry: {
-        app: './src/main.js'
-    },*/
     output: {
         path: config.build.assetsRoot,
         filename: '[name].js',
@@ -70,7 +67,9 @@ let webpackConfig = {
     }
 }
 
-/*集成vux*/
+/**
+ * 使用vuxLoader集成vux
+ */
 module.exports = vuxLoader.merge(webpackConfig, {
     plugins: ['vux-ui', 'duplicate-style'],
     options: { showVuxVersionInfo: false }

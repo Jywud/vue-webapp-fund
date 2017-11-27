@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="v-title-bar" :class="{colorful: isColorful}">
+        <div class="hs-titleBar" :class="{colorful: isColorful}">
             <div class="left-wrap">
                 <span class="iconfont icon-back back-icon" @click="back" v-if="showBack"></span>
             </div>
@@ -18,6 +18,7 @@
 </template>
 <script>
     export default {
+        name: 'hs-titleBar',
         data() {
             return {}
         },
@@ -75,7 +76,7 @@
 </script>
 <style lang="less">
     @import "../../common/style/common.less";
-    #v-title-bar {
+    .hs-titleBar {
         position: absolute;
         top: 0;
         left: 0;

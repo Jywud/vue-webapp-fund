@@ -1,4 +1,7 @@
-/*公用业务方法*/
+/**
+ * created by wujiayu on 2017.10.12
+ * 公用业务方法
+ */
 import _ from 'underscore'
 
 var hsBusiness = {

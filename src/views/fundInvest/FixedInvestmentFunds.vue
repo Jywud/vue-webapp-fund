@@ -1,6 +1,6 @@
 <template>
     <div id="fixedInvestmentFunds">
-        <title-bar title="定投专区" :show-close="false" :isColorful="true" v-show='isShowNavBar'>
+        <title-bar title="定投专区" :isColorful="true" v-show='isShowNavBar' back-path="/home">
             <i class="iconfont icon-search" @click="search"></i>
         </title-bar>
         <div class="tab-bar">
@@ -14,11 +14,11 @@
         <div class="main-column-box">
             <div class="funds-ranking" v-show='isShowMovement'>
                 <list-layout v-show="isShowList" :setting="setting" @listener="listen"></list-layout>
-                <empty-view v-show="!isShowList" message="暂无自选数据" :needLogin="needLogin"></empty-view>
+                <empty-view v-show="!isShowList" message="暂无数据" :needLogin="isNeedLogin"></empty-view>
             </div>
-            <div class="my-funds" v-show='!isShowMovement'>
-                <div class="all" v-for="(item, index) in myFunds" :key="index" @click="goMyPageDetail(item)">
-                    <p>{{item.name}}<span>020202</span></p>
+            <div class="my-funds" v-show='!isShowMovement'>                
+                <div class="all" v-for="(item, index) in myFunds" :key="index" @click="goMyPageDetail(item)" v-if="isShowMyFundList">
+                    <p>{{item.name}}<span>{{item.code}}</span></p>
                     <div class="product">
                         <div class="item-left item">累计定投金额</div>
                         <div class="item-right item">{{item.totleMoney}}元</div>
@@ -32,6 +32,7 @@
                         <div class="item-right item">{{item.date}}</div>
                     </div>
                 </div>
+                <empty-view v-if="!isShowMyFundList" :needLogin="isNeedLogin" message="无定投计划"></empty-view>
             </div>
         </div>
     </div>
@@ -49,9 +50,10 @@
                 json: [],
                 page: 0,
                 weight: [4, 2, 3],
-                needLogin: false,
                 isShowMovement: true,
                 isShowNavBar: true,
+                isShowMyFundList: true, //是否显示我的定投列表
+                isNeedLogin: false,     //是否展示登录再查看按钮
                 myFunds: [
                     {
                         name: '南方稳健壹号',
@@ -62,28 +64,28 @@
                     },
                     {
                         name: '南方稳健壹号2',
-                        code: '234533',
+                        code: '234513',
                         totleMoney: '200',
                         totleShare: '100',
                         date: '2017-10-26'
                     },
                     {
                         name: '南方稳健壹号2',
-                        code: '234533',
+                        code: '264533',
                         totleMoney: '300',
                         totleShare: '100',
                         date: '2017-10-26'
                     },
                     {
                         name: '南方稳健壹号2',
-                        code: '234533',
+                        code: '234833',
                         totleMoney: '100',
                         totleShare: '400',
                         date: '2017-10-26'
                     },
                     {
                         name: '南方稳健壹号3',
-                        code: '234533',
+                        code: '230533',
                         totleMoney: '100',
                         totleShare: '100',
                         date: '2017-10-26'
@@ -173,7 +175,7 @@
         // display: flex;
         // flex-flow: column nowrap;
         .page-style();
-        #v-title-bar {
+        .hs-titleBar {
             border-bottom: none;
         }
         .tab-bar {
@@ -183,18 +185,12 @@
             background-image: @colorful-color;
             height: 36px;
             .content {
-                flex: 1;
-                text-align: center;
-                height: 36px;
-                margin: 0 auto;
+                flex: 1;                
+                height: 36px;    
+                font-size: 16px;
+                text-align: center;   
+                line-height: 1.8;        
                 span {
-                    text-align: center;
-                    width: 50px;
-                    height: 46px;
-                    font-family: PingFangSC-Regular;
-                    font-size: 16px;
-                    color: #fff;
-                    line-height: 36px;
                     padding-bottom: 2px;
                     &.active {
                         color: #fff;

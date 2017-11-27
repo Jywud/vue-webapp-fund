@@ -1,14 +1,16 @@
-/* vue事件总线插件 by wujiayu*/
+/**
+ * vue事件总线插件 by wujiayu
+ */ 
 var install = function (Vue) {
     var Bus = new Vue({
         methods: {
-            emit(event, params, callback) {
+            emit(event, params, callback=function(){}) {
                 this.$emit(event, params, callback);
             },
-            on(event, callback) {
+            on(event, callback=function(){}) {
                 this.$on(event, callback);
             },
-            off(event, callback) {
+            off(event, callback=function(){}) {
                 this.$off(event, callback);
             }
         }
@@ -24,5 +26,5 @@ export default install;
 // });  
 // this.$bus.on('testBus', function (data, fn) {
 //     console.log(data);
-//     fn && fn('aaaa');
+//     fn('aaaa');
 // });

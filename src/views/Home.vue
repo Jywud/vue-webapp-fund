@@ -18,7 +18,7 @@
         name: 'home',
         data() {
             return {
-                num: 0
+                
             }
         },
         mounted() {

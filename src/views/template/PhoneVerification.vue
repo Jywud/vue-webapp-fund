@@ -88,7 +88,7 @@
         methods: {
             done() {
                 if(!utils.check6Num(this.code)) {
-                    this.$vux.toast.text('验证码为6位数字');
+                    utils.toast('验证码为6位数字');
                     return;
                 }
                 

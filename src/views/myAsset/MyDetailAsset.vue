@@ -2,6 +2,9 @@
     @import "../../common/style/common.less";
     #myDetailAsset {
         .page-style();
+        .main-column-box{
+            padding-bottom: 12px;
+        }
         .header {
             background: #fff;
             .num-box {
@@ -109,6 +112,7 @@
             line-height: 50px;
             text-align: center;
             background: #fff;
+            .border-t-1px();
             .item {
                 flex: 1;
                 font-size: 16px;
@@ -131,17 +135,17 @@
             <div class="header">
                 <div class="num-box">
                     <span class="item">
-                                    <p class="text">持有份额(份)</p>
-                                    <p class="num">{{detailData.holdShare}}</p>                        
-                                </span>
+                        <p class="text">持有份额(份)</p>
+                        <p class="num">{{detailData.holdShare}}</p>                        
+                    </span>
                     <span class="item">
-                                    <p class="text">当前净值(元)</p>
-                                    <p class="num">7000</p>                        
-                                </span>
+                        <p class="text">当前净值(元)</p>
+                        <p class="num">7000</p>                        
+                    </span>
                     <span class="item">
-                                    <p class="text">持有收益(元)</p>
-                                    <p class="num add">{{detailData.holdingGains}}</p>                        
-                                </span>
+                        <p class="text">持有收益(元)</p>
+                        <p class="num add">{{detailData.holdingGains}}</p>                        
+                    </span>
                 </div>
             </div>
             <div class="detail-box">
@@ -162,7 +166,7 @@
                     <div class="more" @click="assetDetails()">查看更多</div>
                 </div>
             </div>
-            <div class="profit-box">
+            <div class="profit-box" v-touch>
                 <span class="text">分红方式</span>
                 <span class="choose" @click="chooseDividendWay">分红再投资</span>
             </div>

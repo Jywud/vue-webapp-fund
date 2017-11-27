@@ -1,3 +1,7 @@
+/**
+ * created by wujiayu on 2017.10.9
+ * 全局vue过滤器
+ */
 import Vue from 'vue'
 
 /**

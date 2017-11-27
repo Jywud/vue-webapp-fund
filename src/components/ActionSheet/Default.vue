@@ -1,5 +1,5 @@
 <style lang="less">
-    #v-actionSheet{
+    .hs-actionSheet{
         text-align: center;
         /* 底部1px线条 */
         .border-b-1px(@color: #e5e5e5) {
@@ -50,7 +50,7 @@
     }
 </style>
 <template>
-    <div id="v-actionSheet">        
+    <div class="hs-actionSheet">        
         <div class="mask" @click="tapItem(-1)"></div>
         <transition name="transition-up-down">
             <div class="content-box" v-show="showList">
@@ -62,7 +62,7 @@
 </template>
 <script>
 export default {
-    name: 'actionSheet',
+    name: 'hs-actionSheet',
     data() {
        return {
            showList: false

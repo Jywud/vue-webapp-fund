@@ -1,4 +1,6 @@
-/*组件状态管理 by wujiayu 官网地址https://vuex.vuejs.org/zh-cn/ */
+/**
+ * 组件状态管理 by wujiayu 官网地址https://vuex.vuejs.org/zh-cn/
+ */
 import Vue from "vue"
 import Vuex from "vuex"
 

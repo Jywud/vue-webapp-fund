@@ -76,7 +76,7 @@
         methods: {
             chooseItem(index) {
                 if (index == 1) {
-                    this.$vux.confirm.show({
+                    utils.confirm({
                         content: '修改方式为红利再投资',
                         onCancel: ()=> {
                             this.choose = 2;
@@ -84,9 +84,9 @@
                         onConfirm: () => {                            
                             utils.setData('dividendWay', index);
                         }
-                    });
+                    });                    
                 } else {
-                    this.$vux.confirm.show({
+                    utils.confirm({
                         content: '修改方式为现金分红',
                         onCancel: ()=> {
                             this.choose = 1;

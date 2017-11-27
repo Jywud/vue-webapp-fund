@@ -6,7 +6,7 @@
                 <div class="mes-description">请输入短信验证码</div>
                 <div class="mes-prompt">验证码已发送至 {{phone}}</div>
                 <div class="mes-code">
-                    <div class="mes-code-value" v-for="index in codeLength" :key="index">{{showCode(index - 1)}}</div>
+                    <div class="mes-code-value" v-for="index in 6" :key="index">{{showCode(index - 1)}}</div>
                 </div>
                 <div v-if="codeStatus" class="btn-sms-status " @click="getCode">重新获取验证码</div>
                 <div v-if="!codeStatus" class="btn-sms-status status-wait">{{waitCount}}s后可重新发送</div>
@@ -16,17 +16,18 @@
     </div>
 </template>
 <script>
-import utils from 'js/utils'
+    import utils from 'js/utils'
+    var timer = null;
     export default {
         name: 'login',
         mounted() {
+            this.phone = utils.getData('phone');
         },
         data() {
             return {
                 codeStatus: true,
-                codeLength: 6,
-                phone: "18767130228",
-                smsCode: "",
+                phone: '',
+                smsCode: '',
                 waitCount: 60
             }
         },
@@ -35,7 +36,7 @@ import utils from 'js/utils'
                 this.codeStatus = false;
                 var _this = this;
                 var oldCount = _this.waitCount
-                var timer = setInterval(function () {
+                timer = setInterval(function () {
                     if (_this.waitCount == 0) {
                         _this.codeStatus = true;
                         clearInterval(timer);
@@ -51,19 +52,22 @@ import utils from 'js/utils'
             changeCode(mes){
                 if (mes == "×") {
                     this.smsCode = this.smsCode == "" ? "" : this.smsCode.substring(0, this.smsCode.length - 1);
-                } else if (this.smsCode.length < this.codeLength) {
+                } else if (this.smsCode.length < 6) {
                     this.smsCode = this.smsCode == "" ? mes : this.smsCode + mes;
                 }
             }
         },
         watch: {
             smsCode: function (val) {
-                if (val.length == this.codeLength) {
+                if (val.length == 6) {
                     setTimeout(function () {                        
                         APP.openWin("/registeredPwd");
-                    }, 500)
+                    }, 500);
                 }
             }
+        },
+        beforeDestroy() {
+            clearInterval(timer);
         }
     }
 </script>

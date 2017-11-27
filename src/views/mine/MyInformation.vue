@@ -12,7 +12,7 @@
         .logout {
             text-align: center;
             color: @primary-color;
-            padding: 18px 0;
+            padding: 14px 0;
             font-size: 16px;
         }
     }
@@ -37,7 +37,7 @@
                 <line-cell title="职业" :text="professionVal[0]" :isLink="true" @tapItem="tapItem"></line-cell>
             </div>
             <div class="group-box">
-                <div class="logout" @click="logout">退出</div>
+                <div class="logout" @click="logout" v-touch>退出</div>
             </div>
         </div>
         <popup-picker :show.sync="showProfessionPicker" :data="professionList" :show-cell="false" v-model="professionVal"></popup-picker>

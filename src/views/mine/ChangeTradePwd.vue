@@ -60,11 +60,11 @@
         methods: {
             confirm() {
                 if(this.oldPwd == '' || this.newPwd == '' || this.confirmPwd == '') {
-                    this.$vux.toast.text('密码不能为空');
+                    utils.toast('密码不能为空');
                     return;
                 }
                 if(this.newPwd !== this.confirmPwd) {
-                    this.$vux.toast.text('新密码和确认密码不一致');
+                    utils.toast('新密码和确认密码不一致');
                     return;
                 }
             }

@@ -1,5 +1,5 @@
 <template>
-    <div id="emptyView">
+    <div class="hs-emptyView">
         <div v-if="!needLogin" class="empty-main">
             <span class="iconfont img" :class="icon"></span>
             <span class="mess">{{message}}</span>
@@ -11,6 +11,7 @@
 </template>
 <script>
     export default {
+        name: 'hs-emptyView',
         data() {
             return {}
         },
@@ -36,13 +37,12 @@
 <style lang="less">
     @import "../../common/style/common.less";
 
-    #emptyView {
+    .hs-emptyView {
         width: 100%;
         height: 100%;
         overflow: hidden;
         .empty-nologin {
-            display: flex;
-            position: absolute;
+            display: flex;            
             width: 100%;
             height: 100%;
             background: @white-color;
@@ -50,27 +50,25 @@
             align-items: center;
             .empty-login {
                 padding: 0 30px;
-                height: 45px;
-                line-height: 45px;
+                height: 40px;
+                line-height: 40px;
                 border-radius: 4px;
                 color: @white-color;
-                background: @primary-color;
+                background-color: @primary-color;
                 font-size: 16px;
             }
         }
         .empty-main {
             display: flex;
             flex-flow: column nowrap;
-            position: absolute;
             width: 100%;
             height: 100%;
             background: @white-color;
             justify-content: center;
-            text-align: center;
+            align-items: center;          
             .img {
                 font-size: 80px;
-                color: @litgray-color;
-                margin-top: -100px;
+                color: @litgray-color;                
             }
             .mess {
                 margin-top: 16px;

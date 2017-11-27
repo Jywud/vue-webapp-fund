@@ -6,15 +6,16 @@
                 <div class="mes-description">请输入手机号码</div>
                 <div class="mes-phone">
                     <div class="mes-phone-value">+86</div>
-                    <input type="text" v-model="phone" maxlength="11">
+                    <input type="tel" v-model="phone" maxlength="11" v-focus placeholder="请输入11位手机号码">
                     <span class="iconfont icon-empty mes-clean" v-show="isShowEmpty" @click="phone=''"></span>
                 </div>
-                <div class="btn btn-primary btn-sure" @click="sure" v-btntouch>确定</div>
+                <div class="btn btn-primary btn-sure" @click="confirm" v-btntouch>确定</div>
             </div>
         </div>
     </div>
 </template>
 <script>
+    import utils from 'js/utils'
     export default {
         name: 'login',
         mounted() {
@@ -27,7 +28,12 @@
             }
         },
         methods: {
-            sure(){
+            confirm(){
+                if(!utils.checkMobile(this.phone)) {
+                    utils.toast('手机格式有误');
+                    return;
+                }
+                utils.setData('phone', this.phone);
                 APP.openWin("/registeredSMS");
             }
         },
@@ -73,14 +79,10 @@
                         font-size: 20px;                        
                         color: @dark-color;
                     }
-                    input[type="text"]{
-                        flex: 1;
-                        font-size: 20px;
-                    }
-                    .mes-clean {                        
-                        font-size: 18px;
-                        color: rgba(255,255,255,0.6);
-
+                    input{
+                        height: 100%;
+                        flex: 1;   
+                        font-size: 20px;                     
                     }
                 }
                 .btn-sure {

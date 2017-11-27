@@ -87,14 +87,14 @@
         methods: {
             done() {
                 if(!utils.checkMail(this.email)) {
-                    this.$vux.toast.text('邮箱格式有误');
+                    utils.toast('邮箱格式有误');
                     return;
                 }
                 if(!utils.check6Num(this.code)) {
-                    this.$vux.toast.text('验证码为6位数字');
+                    utils.toast('验证码为6位数字');
                     return;
                 }
-                this.$vux.toast.text('修改成功');
+                utils.toast('修改成功');
                 APP.closeTo("/myInformation");
             },
             getMesCode() {

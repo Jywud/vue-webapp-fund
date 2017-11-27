@@ -3,7 +3,7 @@
 
 #recommend {
     .overflow-auto();
-    padding-bottom: 55px;
+    padding-bottom: 50px;
     .search-main {
         display: flex;
         flex-flow: row nowrap;
@@ -22,15 +22,14 @@
             margin: 6px 10px;
             width: 100%;
             height: 32px;
-            background: @white-color;
+            background-color: rgba(255,255,255,0.8);
+            color: #888;
             border-radius: 4px;
-            .search-icon {
-                color: @litgray-color;
+            .search-icon {               
                 font-size: 16px;
                 padding-right: 10px;
             }
-            .search-description {
-                color: @litgray-color;
+            .search-description {                
                 font-size: 14px;
                 text-align: center;
             }
@@ -125,6 +124,11 @@
                 flex: 1;
                 color: @gray-color;
                 text-align: right;
+                .icon{
+                    margin-left: 6px;
+                    .triangle-right();
+                }
+                
             }
         }
         .content-pan {
@@ -180,7 +184,7 @@
                 <span class="search-description">输入基金名称/代码进行搜索</span>
             </div>
         </div>
-        <swiper :list="list" auto dots-position="center" style="width:100%;margin:0 auto;"></swiper>
+        <swiper :list="list" auto loop dots-position="center" style="width:100%;margin:0 auto;"></swiper>
         <div class="classify-box">
             <div class="item" v-for="(item, index) in subjectList" @click="goSubject(item)" :key="index" v-touch>
                 <img :src="item.image">
@@ -199,10 +203,10 @@
         <div class="hot-box">
             <div class="top-pan">
                 <div class="title">热门基金</div>
-                <div class="more"  @click="goPage('/hotFundRanking')">更多基金</div>
+                <div class="more"  @click="goPage('/hotFundRanking')">更多基金<span class="icon"></span></div>
             </div>
             <div class="content-pan">
-                <div class="item" v-for="(item, index) in hotFundList" @click="goHotFund(item)" :key="index">
+                <div class="item" v-for="(item, index) in hotFundList" @click="goHotFund(item)" :key="index" v-touch>
                     <div class="left-pan">
                         <p class="rate" v-percent>{{item.rate}}</p>
                         <p class="text">{{item.dateText}}</p>
@@ -218,18 +222,19 @@
                 </div>
             </div>
         </div>
+        <divider>我是有底线的</divider>
     </div>
 </template>
 <script>
 import utils from 'js/utils'
+import {Swiper, Divider} from 'vux'
+import _ from 'underscore'
+
 const baseList = [
     {img: 'static/image/1.jpg'},
     {img: 'static/image/2.jpg'},
-    {img: 'static/image/3.jpg'},
+    {img: 'static/image/3.jpg'}
 ] 
-
-import {Swiper} from 'vux'
-import _ from 'underscore'
 export default {
     name: 'recommend',
     mounted() {
@@ -278,7 +283,8 @@ export default {
         }
     },
     components: {
-        Swiper
+        Swiper,
+        Divider
     }
 }
 </script>

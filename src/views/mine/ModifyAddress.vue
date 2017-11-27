@@ -36,6 +36,7 @@
 </template>
 
 <script>
+    import utils from 'js/utils'
     export default {
         name: "modifyAddress",
         data() {
@@ -46,10 +47,10 @@
         methods: {
             confirm() {
                 if(this.address.length == 0) {
-                    this.$vux.toast.text('地址不能为空');
+                    utils.toast('地址不能为空');
                     return;                    
                 }
-                this.$vux.toast.text('修改成功');
+                utils.toast('修改成功');
                 APP.closeTo('/myInformation');
             }
         }

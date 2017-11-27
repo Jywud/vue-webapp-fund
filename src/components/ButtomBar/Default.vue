@@ -1,6 +1,6 @@
 <style lang="less">
 @import "../../common/style/common.less";
-	#buttom-bar{		
+	.hs-buttomBar{		
 		position: fixed;
         bottom: 0;
         left: 0;
@@ -28,7 +28,7 @@
 	}
 </style>
 <template>
-	<div id="buttom-bar">
+	<div class="hs-buttomBar">
 		<div class="item" v-for="(item, index) in list" :key="index" :class="{active: item.isActive}" @click="select(item, index)">
 			<i class="iconfont" :class="item.icon"></i>
 			<p class="text">{{item.name}}</p>
@@ -38,7 +38,7 @@
 <script>
 import utils from 'js/utils'
 	export default {
-		name: 'ButtomBar',
+		name: 'hs-buttomBar',
 		data() {
 			return {
 				list: [

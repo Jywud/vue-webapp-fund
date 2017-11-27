@@ -82,8 +82,8 @@
 	<div id="investDetail">
 		<title-bar title="详情" :isColorful="true"></title-bar>
 		<div class="content">
-			<div class="header">
-				<p class="fund-name" @click="goPage('/fundDetails')">
+			<div class="header" @click="goPage('/fundDetails')" v-touch>
+				<p class="fund-name">
 					{{name}}
 				</p>
 				<p class="fund-code">
@@ -96,16 +96,17 @@
 			</div>
 		</div>
 		<div class="buttom-box" v-if="isModify">
-			<div class="item" @click="goPage('/investModify')"><i class="iconfont icon-xiugai"></i>  修改</div>
-			<div class="item" @click="stop"><i class="iconfont icon-stop"></i>  终止</div>
+			<div class="item" @click="goPage('/investModify')" v-touch><i class="iconfont icon-xiugai"></i>  修改</div>
+			<div class="item" @click="stop" v-touch><i class="iconfont icon-stop"></i>  终止</div>
 		</div>
 		<div class="buttom-box" v-if="!isModify">
-			<div class="not-modify">终止审核中</div>
+			<div class="not-modify">{{state}}</div>
 		</div>
 	</div>
 </template>
 <script>
-export default {
+import utils from 'js/utils'
+export default {    
 	name: "investDetail",
 	data() {
 		return {
@@ -158,14 +159,14 @@ export default {
             });
         },
         stop() {
-            this.$vux.confirm.show({
-                content: '终止后将不再扣款，且定投计划不可恢复。',
+            utils.confirm({                
+                content: '终止后将不再扣款，且定投计划不可恢复',
                 onCancel: ()=> {                    
                 },
                 onConfirm: () => {                            
                     this.showPasswordPan();
                 }
-            });            
+            });
         },
         goPage(url) {
             APP.openWin(url);

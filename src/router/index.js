@@ -1,4 +1,6 @@
-/*vue router by wujiayu 官网地址https://router.vuejs.org/zh-cn/index.html */
+/**
+ * vue router by wujiayu 官网地址https://router.vuejs.org/zh-cn/index.html
+ */
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -54,18 +56,12 @@ const routes = [
   {
     path: '/registeredPwd',
     name: 'registeredPwd',
-    component: r => require.ensure([], () => r(require('src/views/registered/RegisteredPwd')), 'default')
+    component: r => require.ensure([], () => r(require('src/views/template/RegisteredPwd')), 'default')
   },
   {
     path: '/registeredResult',
     name: 'registeredResult',
     component: r => require.ensure([], () => r(require('src/views/registered/RegisteredResult')), 'default')
-  },
-  /* 验证手机 ShortMessageIdentification */
-  {
-    path: '/shortMessageIdentification',
-    name: 'shortMessageIdentification',
-    component: r => require.ensure([], () => r(require('src/views/template/ShortMessageIdentification')), 'default')
   },
   /* 验证手机-忘记密码 */
   {
@@ -234,7 +230,7 @@ const routes = [
   {
     path: '/AppropriateAssessment',
     name: '/AppropriateAssessment',
-    component: r => require.ensure([], () => r(require('src/views/fundBuy/appropriateAssessment')), 'default')
+      component: r => require.ensure([], () => r(require('src/views/template/appropriateAssessment')), 'default')
   },
   /* 购买结果反馈 */
   {
@@ -346,11 +342,15 @@ let router = new Router({
 });
 
 /**
-* 路由拦截
+* 路由跳转拦截
 *next()方法必须调用
 */
 router.beforeEach((to, from, next) => {
   next();
+});
+/* 跳转成功后回调 */
+router.afterEach((to) => {
+    
 });
 
 export default router;

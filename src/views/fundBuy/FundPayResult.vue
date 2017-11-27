@@ -116,7 +116,7 @@
             confirm() {
                 APP.openPopWin('passwordView', function (data) {
                     if(data.status == 2) {
-
+                        // APP.openWin('/selectBankCard');
                     }
                 });
             },

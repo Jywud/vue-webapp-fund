@@ -33,8 +33,12 @@
 
         }
     }
-	.agreement-line {
-		padding: 15px;
+	.agreement-line {        
+        margin: 15px 15px 0;            
+        label{
+            display: inline-block;
+            height: 50px;;
+        }
 		.agreen-text {
 			color: @litdark-color;
 		}
@@ -43,7 +47,7 @@
 		}
 	}
 	.btn-next {
-		margin: 15px 15px 0;
+		margin: 0 15px;
 		border-radius: 4px;
 	}
 	.tip {
@@ -88,6 +92,7 @@
 </template>
 
 <script>
+import utils from 'js/utils'
 export default {
 	name: 'fundBuy',
 	data() {
@@ -110,12 +115,11 @@ export default {
 
 		},
 		goNext() {
-            APP.openPopWin('passwordView', (data)=> {
-                // console.log(data);
-                if(data.status == 2) {                    
-                    APP.openWin('/fundBuyResult');
-                }                
+            utils.setCommonRouter({
+                'appropriateAssessment': '/fundBuyResult'
             });
+            APP.openWin('/appropriateAssessment');
+            
 		},
 		watchAgreen() {
             APP.openWin('/fundBuyAgreement');
